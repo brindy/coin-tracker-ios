@@ -20,14 +20,15 @@
                     </tabBar>
                     <connections>
                         <segue destination="F0C-Or-Q0g" kind="relationship" relationship="viewControllers" id="smu-sj-i7P"/>
+                        <segue destination="eNX-6h-pqu" kind="relationship" relationship="viewControllers" id="d8g-m8-O6X"/>
                         <segue destination="o0h-OU-N8j" kind="relationship" relationship="viewControllers" id="SOs-Dx-wEB"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pwe-jg-jC1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-153" y="504"/>
+            <point key="canvasLocation" x="-6911" y="-2326"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Your Coins-->
         <scene sceneID="OcE-eq-wjt">
             <objects>
                 <tableViewController id="nxI-Bw-EVP" customClass="PortfolioViewController" customModule="CoinTracker" customModuleProvider="target" sceneMemberID="viewController">
@@ -50,7 +51,7 @@
                             <outlet property="delegate" destination="nxI-Bw-EVP" id="qJH-gV-O2s"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="znp-qP-pJj">
+                    <navigationItem key="navigationItem" title="Your Coins" id="znp-qP-pJj">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="68u-Ih-8WG">
                             <connections>
                                 <segue destination="s1f-3o-486" kind="show" id="hVo-Vs-K5P"/>
@@ -60,7 +61,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F5F-Fb-BhN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2034" y="137"/>
+            <point key="canvasLocation" x="-7737" y="-693"/>
         </scene>
         <!--AddCoin-->
         <scene sceneID="4YQ-yb-tzo">
@@ -68,7 +69,7 @@
                 <viewControllerPlaceholder storyboardName="AddCoin" id="s1f-3o-486" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pfa-4Y-yYy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2776" y="136"/>
+            <point key="canvasLocation" x="-7740" y="-196"/>
         </scene>
         <!--Portfolio-->
         <scene sceneID="lYV-8D-dPh">
@@ -85,7 +86,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E5p-h5-gr0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1082" y="137"/>
+            <point key="canvasLocation" x="-7737" y="-1469"/>
         </scene>
         <!--Settings-->
         <scene sceneID="Axh-9J-awF">
@@ -96,7 +97,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="PJi-KH-oFP">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="PJi-KH-oFP">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PJi-KH-oFP" id="QUv-es-X2v">
@@ -114,7 +115,36 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AFz-lz-G82" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1081" y="895"/>
+            <point key="canvasLocation" x="-6004" y="-1471"/>
+        </scene>
+        <!--History-->
+        <scene sceneID="LgN-tX-J4p">
+            <objects>
+                <tableViewController id="eNX-6h-pqu" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="aDy-5z-BS8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="Fli-wG-eB6">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fli-wG-eB6" id="Shc-9N-Aqo">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="eNX-6h-pqu" id="GHA-DV-tsu"/>
+                            <outlet property="delegate" destination="eNX-6h-pqu" id="ajw-vN-ke4"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="History" id="VH7-JZ-6AF"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aGb-Mq-AKo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-6911" y="-1471"/>
         </scene>
     </scenes>
 </document>

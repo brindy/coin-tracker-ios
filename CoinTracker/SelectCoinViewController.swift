@@ -27,6 +27,15 @@ class SelectCoinViewController: UITableViewController {
         }
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        guard let controller = segue.destination as? EnterCoinDetailsViewController else {
+            return;
+        }
+
+        controller.coin = coinRepository.coins[tableView.indexPathForSelectedRow!.row]
+    }
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
