@@ -8,7 +8,7 @@
 
 import Foundation
 
-class AppSettings {
+struct AppSettings {
 
     public var currency = "GBP"
 

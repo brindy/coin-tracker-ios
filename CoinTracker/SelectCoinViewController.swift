@@ -13,6 +13,8 @@ class SelectCoinViewController: UITableViewController {
 
     lazy var coinRepository = CoinRepository()
 
+    var busy = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,6 +23,7 @@ class SelectCoinViewController: UITableViewController {
 
         if coinRepository.coins.isEmpty {
             refresh()
+            tableView.setContentOffset(CGPoint(x: 0, y: -refreshControl!.frame.size.height), animated: true)
         }
     }
 
@@ -32,16 +35,26 @@ class SelectCoinViewController: UITableViewController {
         return coinRepository.coins.count
     }
 
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Symbol")!
+        cell.textLabel?.text = coinRepository.coins[indexPath.row].symbol
+        cell.detailTextLabel?.text = coinRepository.coins[indexPath.row].name
+        return cell
+    }
+
     func refresh() {
 
-        guard !(refreshControl?.isRefreshing ?? false) else {
+        guard !busy else {
             return
         }
 
+        busy = true
         refreshControl?.beginRefreshing()
 
         coinRepository.refresh {
+            self.busy = false
             self.refreshControl?.endRefreshing()
+            self.tableView.reloadData()
         }
 
     }

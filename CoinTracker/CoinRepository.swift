@@ -13,8 +13,21 @@ class CoinRepository {
     var coins = [Coin]()
 
     func refresh(completion: @escaping () -> Void) {
-        DispatchQueue.main.async {
-            completion()
+        CoinMarketCapRequest().async { result in
+            if let coins = result {
+
+                let top10 = coins[0...10]
+                let theRest = coins[11...coins.count - 1]
+
+                self.coins = top10 + theRest.sorted(by: { (left, right) -> Bool in
+                    left.symbol.compare(right.symbol) == ComparisonResult.orderedAscending
+                })
+
+            }
+
+            DispatchQueue.main.async {
+                completion()
+            }
         }
     }
 

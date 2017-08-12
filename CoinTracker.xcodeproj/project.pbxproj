@@ -16,6 +16,8 @@
 		857A080C1F3EF8770035EFF4 /* SelectCoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857A080B1F3EF8770035EFF4 /* SelectCoinViewController.swift */; };
 		857A08101F3EF8E00035EFF4 /* CoinRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857A080F1F3EF8E00035EFF4 /* CoinRepository.swift */; };
 		857A08131F3EF9310035EFF4 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857A08121F3EF9310035EFF4 /* AppSettings.swift */; };
+		857A08161F3F01D50035EFF4 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 857A08151F3F01D50035EFF4 /* Alamofire.framework */; };
+		857A08181F3F02410035EFF4 /* CoinMarketCapRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857A08171F3F02410035EFF4 /* CoinMarketCapRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		857A080B1F3EF8770035EFF4 /* SelectCoinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectCoinViewController.swift; sourceTree = "<group>"; };
 		857A080F1F3EF8E00035EFF4 /* CoinRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoinRepository.swift; sourceTree = "<group>"; };
 		857A08121F3EF9310035EFF4 /* AppSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		857A08151F3F01D50035EFF4 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		857A08171F3F02410035EFF4 /* CoinMarketCapRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoinMarketCapRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				857A08161F3F01D50035EFF4 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,6 +53,7 @@
 			children = (
 				857A07F61F3EF39D0035EFF4 /* CoinTracker */,
 				857A07F51F3EF39D0035EFF4 /* Products */,
+				857A08141F3F01D50035EFF4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -72,9 +78,9 @@
 		857A080D1F3EF8A20035EFF4 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				857A07F91F3EF39D0035EFF4 /* PortfolioViewController.swift */,
-				857A07FB1F3EF39D0035EFF4 /* Main.storyboard */,
 				857A08091F3EF7770035EFF4 /* AddCoin.storyboard */,
+				857A07FB1F3EF39D0035EFF4 /* Main.storyboard */,
+				857A07F91F3EF39D0035EFF4 /* PortfolioViewController.swift */,
 				857A080B1F3EF8770035EFF4 /* SelectCoinViewController.swift */,
 			);
 			name = UI;
@@ -94,10 +100,19 @@
 		857A08111F3EF8E50035EFF4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				857A080F1F3EF8E00035EFF4 /* CoinRepository.swift */,
 				857A08121F3EF9310035EFF4 /* AppSettings.swift */,
+				857A08171F3F02410035EFF4 /* CoinMarketCapRequest.swift */,
+				857A080F1F3EF8E00035EFF4 /* CoinRepository.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		857A08141F3F01D50035EFF4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				857A08151F3F01D50035EFF4 /* Alamofire.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -110,6 +125,7 @@
 				857A07F01F3EF39D0035EFF4 /* Sources */,
 				857A07F11F3EF39D0035EFF4 /* Frameworks */,
 				857A07F21F3EF39D0035EFF4 /* Resources */,
+				857A08191F3F052C0035EFF4 /* Carthage Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -169,6 +185,25 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		857A08191F3F052C0035EFF4 /* Carthage Copy Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+			);
+			name = "Carthage Copy Frameworks";
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		857A07F01F3EF39D0035EFF4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -177,6 +212,7 @@
 				857A08101F3EF8E00035EFF4 /* CoinRepository.swift in Sources */,
 				857A080C1F3EF8770035EFF4 /* SelectCoinViewController.swift in Sources */,
 				857A07FA1F3EF39D0035EFF4 /* PortfolioViewController.swift in Sources */,
+				857A08181F3F02410035EFF4 /* CoinMarketCapRequest.swift in Sources */,
 				857A08131F3EF9310035EFF4 /* AppSettings.swift in Sources */,
 				857A07F81F3EF39D0035EFF4 /* AppDelegate.swift in Sources */,
 			);
@@ -304,6 +340,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = EVNNUL2F2G;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = CoinTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.org.brindy.CoinTracker;
@@ -317,6 +357,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = EVNNUL2F2G;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = CoinTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.org.brindy.CoinTracker;
