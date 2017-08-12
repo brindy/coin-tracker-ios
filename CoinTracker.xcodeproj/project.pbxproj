@@ -8,20 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		857A07F81F3EF39D0035EFF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857A07F71F3EF39D0035EFF4 /* AppDelegate.swift */; };
-		857A07FA1F3EF39D0035EFF4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857A07F91F3EF39D0035EFF4 /* ViewController.swift */; };
+		857A07FA1F3EF39D0035EFF4 /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857A07F91F3EF39D0035EFF4 /* PortfolioViewController.swift */; };
 		857A07FD1F3EF39D0035EFF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 857A07FB1F3EF39D0035EFF4 /* Main.storyboard */; };
 		857A07FF1F3EF39D0035EFF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 857A07FE1F3EF39D0035EFF4 /* Assets.xcassets */; };
 		857A08021F3EF39D0035EFF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 857A08001F3EF39D0035EFF4 /* LaunchScreen.storyboard */; };
+		857A080A1F3EF7770035EFF4 /* AddCoin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 857A08091F3EF7770035EFF4 /* AddCoin.storyboard */; };
+		857A080C1F3EF8770035EFF4 /* SelectCoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857A080B1F3EF8770035EFF4 /* SelectCoinViewController.swift */; };
+		857A08101F3EF8E00035EFF4 /* CoinRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857A080F1F3EF8E00035EFF4 /* CoinRepository.swift */; };
+		857A08131F3EF9310035EFF4 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857A08121F3EF9310035EFF4 /* AppSettings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		857A07F41F3EF39D0035EFF4 /* CoinTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoinTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		857A07F71F3EF39D0035EFF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		857A07F91F3EF39D0035EFF4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		857A07F91F3EF39D0035EFF4 /* PortfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
 		857A07FC1F3EF39D0035EFF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		857A07FE1F3EF39D0035EFF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		857A08011F3EF39D0035EFF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		857A08031F3EF39D0035EFF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		857A08091F3EF7770035EFF4 /* AddCoin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddCoin.storyboard; sourceTree = "<group>"; };
+		857A080B1F3EF8770035EFF4 /* SelectCoinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectCoinViewController.swift; sourceTree = "<group>"; };
+		857A080F1F3EF8E00035EFF4 /* CoinRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoinRepository.swift; sourceTree = "<group>"; };
+		857A08121F3EF9310035EFF4 /* AppSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +62,42 @@
 		857A07F61F3EF39D0035EFF4 /* CoinTracker */ = {
 			isa = PBXGroup;
 			children = (
-				857A07F71F3EF39D0035EFF4 /* AppDelegate.swift */,
-				857A07F91F3EF39D0035EFF4 /* ViewController.swift */,
+				857A080E1F3EF8C30035EFF4 /* Support */,
+				857A080D1F3EF8A20035EFF4 /* UI */,
+				857A08111F3EF8E50035EFF4 /* Model */,
+			);
+			path = CoinTracker;
+			sourceTree = "<group>";
+		};
+		857A080D1F3EF8A20035EFF4 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				857A07F91F3EF39D0035EFF4 /* PortfolioViewController.swift */,
 				857A07FB1F3EF39D0035EFF4 /* Main.storyboard */,
+				857A08091F3EF7770035EFF4 /* AddCoin.storyboard */,
+				857A080B1F3EF8770035EFF4 /* SelectCoinViewController.swift */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		857A080E1F3EF8C30035EFF4 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				857A07F71F3EF39D0035EFF4 /* AppDelegate.swift */,
 				857A07FE1F3EF39D0035EFF4 /* Assets.xcassets */,
 				857A08001F3EF39D0035EFF4 /* LaunchScreen.storyboard */,
 				857A08031F3EF39D0035EFF4 /* Info.plist */,
 			);
-			path = CoinTracker;
+			name = Support;
+			sourceTree = "<group>";
+		};
+		857A08111F3EF8E50035EFF4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				857A080F1F3EF8E00035EFF4 /* CoinRepository.swift */,
+				857A08121F3EF9310035EFF4 /* AppSettings.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,6 +163,7 @@
 				857A08021F3EF39D0035EFF4 /* LaunchScreen.storyboard in Resources */,
 				857A07FF1F3EF39D0035EFF4 /* Assets.xcassets in Resources */,
 				857A07FD1F3EF39D0035EFF4 /* Main.storyboard in Resources */,
+				857A080A1F3EF7770035EFF4 /* AddCoin.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,7 +174,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				857A07FA1F3EF39D0035EFF4 /* ViewController.swift in Sources */,
+				857A08101F3EF8E00035EFF4 /* CoinRepository.swift in Sources */,
+				857A080C1F3EF8770035EFF4 /* SelectCoinViewController.swift in Sources */,
+				857A07FA1F3EF39D0035EFF4 /* PortfolioViewController.swift in Sources */,
+				857A08131F3EF9310035EFF4 /* AppSettings.swift in Sources */,
 				857A07F81F3EF39D0035EFF4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -205,7 +245,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -250,7 +290,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
