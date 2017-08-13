@@ -19,16 +19,14 @@ class PortfolioViewController: UITableViewController {
     override func viewDidLoad() {
 
         refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        refreshControl?.addTarget(self, action: #selector(refreshCoins), for: .valueChanged)
 
         tableView.setContentOffset(CGPoint(x: 0, y: -refreshControl!.frame.size.height), animated: true)
-        refresh()
+        refreshCoins()
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        navigationItem.title = "Your Coins - \(AppSettings().currency)"
-        positions = Array(Portfolio.shared.positions.values)
-        tableView.reloadData()
+        refreshPortfolio()
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -67,13 +65,24 @@ class PortfolioViewController: UITableViewController {
         return cell
     }
 
-    func refresh() {
+    func refreshPortfolio() {
+        navigationItem.title = "Your Coins - \(AppSettings().currency)"
+        positions = Array(Portfolio.shared.positions.values).sorted(by: { (left, right) -> Bool in
+            guard let leftCoin = repository.coin(for: left.coinId) else { return false }
+            guard let rightCoin = repository.coin(for: right.coinId) else { return false }
+            return leftCoin.symbol.compare(rightCoin.symbol) == .orderedAscending
+
+        })
+        self.busy = false
+        self.refreshControl?.endRefreshing()
+        tableView.reloadData()
+    }
+
+    func refreshCoins() {
         busy = true
         refreshControl?.beginRefreshing()
         CoinRepository.shared.refresh {
-            self.busy = false
-            self.refreshControl?.endRefreshing()
-            self.tableView.reloadData()
+            self.refreshPortfolio()
         }
     }
 
