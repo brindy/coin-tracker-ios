@@ -10,7 +10,13 @@ import Foundation
 
 class CoinRepository {
 
+    static var shared = CoinRepository()
+
     var coins = [Coin]()
+
+    private init() {
+        
+    }
 
     func refresh(completion: @escaping () -> Void) {
         CoinMarketCapRequest().async { result in
@@ -29,6 +35,17 @@ class CoinRepository {
                 completion()
             }
         }
+    }
+
+    func coin(for id: String) -> Coin? {
+
+        for coin in coins {
+            if coin.id == id {
+                return coin
+            }
+        }
+
+        return nil
     }
 
 }

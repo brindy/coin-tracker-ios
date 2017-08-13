@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		857A07F81F3EF39D0035EFF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857A07F71F3EF39D0035EFF4 /* AppDelegate.swift */; };
-		857A07FA1F3EF39D0035EFF4 /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857A07F91F3EF39D0035EFF4 /* PortfolioViewController.swift */; };
 		857A07FD1F3EF39D0035EFF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 857A07FB1F3EF39D0035EFF4 /* Main.storyboard */; };
 		857A07FF1F3EF39D0035EFF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 857A07FE1F3EF39D0035EFF4 /* Assets.xcassets */; };
 		857A08021F3EF39D0035EFF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 857A08001F3EF39D0035EFF4 /* LaunchScreen.storyboard */; };
@@ -19,12 +18,13 @@
 		857A08161F3F01D50035EFF4 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 857A08151F3F01D50035EFF4 /* Alamofire.framework */; };
 		857A08181F3F02410035EFF4 /* CoinMarketCapRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857A08171F3F02410035EFF4 /* CoinMarketCapRequest.swift */; };
 		857A081D1F3F160B0035EFF4 /* EnterCoinDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857A081C1F3F160B0035EFF4 /* EnterCoinDetailsViewController.swift */; };
+		85A9CBCB1F3F2D6600CE7529 /* Portfolio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A9CBCA1F3F2D6600CE7529 /* Portfolio.swift */; };
+		85A9CBCD1F3F31B100CE7529 /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A9CBCC1F3F31B100CE7529 /* PortfolioViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		857A07F41F3EF39D0035EFF4 /* CoinTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoinTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		857A07F71F3EF39D0035EFF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		857A07F91F3EF39D0035EFF4 /* PortfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
 		857A07FC1F3EF39D0035EFF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		857A07FE1F3EF39D0035EFF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		857A08011F3EF39D0035EFF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -36,6 +36,8 @@
 		857A08151F3F01D50035EFF4 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		857A08171F3F02410035EFF4 /* CoinMarketCapRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoinMarketCapRequest.swift; sourceTree = "<group>"; };
 		857A081C1F3F160B0035EFF4 /* EnterCoinDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterCoinDetailsViewController.swift; sourceTree = "<group>"; };
+		85A9CBCA1F3F2D6600CE7529 /* Portfolio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Portfolio.swift; sourceTree = "<group>"; };
+		85A9CBCC1F3F31B100CE7529 /* PortfolioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				857A08121F3EF9310035EFF4 /* AppSettings.swift */,
 				857A08171F3F02410035EFF4 /* CoinMarketCapRequest.swift */,
 				857A080F1F3EF8E00035EFF4 /* CoinRepository.swift */,
+				85A9CBCA1F3F2D6600CE7529 /* Portfolio.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -129,7 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				857A07FB1F3EF39D0035EFF4 /* Main.storyboard */,
-				857A07F91F3EF39D0035EFF4 /* PortfolioViewController.swift */,
+				85A9CBCC1F3F31B100CE7529 /* PortfolioViewController.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -228,10 +231,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85A9CBCB1F3F2D6600CE7529 /* Portfolio.swift in Sources */,
 				857A08101F3EF8E00035EFF4 /* CoinRepository.swift in Sources */,
+				85A9CBCD1F3F31B100CE7529 /* PortfolioViewController.swift in Sources */,
 				857A081D1F3F160B0035EFF4 /* EnterCoinDetailsViewController.swift in Sources */,
 				857A080C1F3EF8770035EFF4 /* SelectCoinViewController.swift in Sources */,
-				857A07FA1F3EF39D0035EFF4 /* PortfolioViewController.swift in Sources */,
 				857A08181F3F02410035EFF4 /* CoinMarketCapRequest.swift in Sources */,
 				857A08131F3EF9310035EFF4 /* AppSettings.swift in Sources */,
 				857A07F81F3EF39D0035EFF4 /* AppDelegate.swift in Sources */,
@@ -408,6 +412,7 @@
 				857A08081F3EF39D0035EFF4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -31,6 +31,7 @@ class EnterCoinDetailsViewController: UITableViewController {
     }
 
     @IBAction func done() {
+        Portfolio.shared.add(coin, amount: Double(amountText.text ?? "0")!, date: datePicker.date)
         navigationController?.popToRootViewController(animated: true)
     }
 

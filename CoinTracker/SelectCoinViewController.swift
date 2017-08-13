@@ -11,7 +11,7 @@ import UIKit
 
 class SelectCoinViewController: UITableViewController {
 
-    lazy var coinRepository = CoinRepository()
+    lazy var coinRepository = CoinRepository.shared
 
     var busy = false
 
