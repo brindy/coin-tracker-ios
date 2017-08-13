@@ -164,7 +164,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Portfolio" id="SA3-Pc-sDE">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Luo-JK-PKO">
+                        <barButtonItem key="rightBarButtonItem" title="Buy" id="Luo-JK-PKO">
                             <connections>
                                 <segue destination="jxK-CM-ICi" kind="show" id="EbF-vv-rK9"/>
                             </connections>

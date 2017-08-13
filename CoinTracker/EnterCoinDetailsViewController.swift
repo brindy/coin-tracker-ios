@@ -16,6 +16,8 @@ class EnterCoinDetailsViewController: UITableViewController {
     @IBOutlet weak var dateText: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
 
+    let portfolio = Portfolio.shared
+
     var coin: Coin!
 
     let formatter = DateFormatter()
@@ -38,7 +40,7 @@ class EnterCoinDetailsViewController: UITableViewController {
     }
 
     @IBAction func done() {
-        Portfolio.shared.add(coin, amount: Double(amountText.text ?? "0")!, date: datePicker.date)
+        portfolio.add(coinId: coin.id, amount: Double(amountText.text ?? "0")!, date: datePicker.date)
         navigationController?.popToRootViewController(animated: true)
     }
 

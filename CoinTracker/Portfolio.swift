@@ -12,15 +12,22 @@ class Portfolio {
 
     public static let shared = Portfolio()
 
+    let database = Database.shared
+
     var positions = [String: Position]()
 
     private init() {
         rebuildPositions()
     }
 
-    func add(_ coin: Coin, amount: Double, date: Date) {
-        _ = Database.shared.addHistoryItem(coinId: coin.id, amount: amount, date: date)
+    func add(coinId: String, amount: Double, date: Date) {
+        _ = database.addHistoryItem(coinId: coinId, amount: amount, date: date)
         rebuildPositions()
+    }
+
+    func delete(coinId: String) {
+        positions[coinId] = nil
+        database.removeHistoryItems(for: coinId)
     }
 
     func rebuildPositions() {

@@ -12,6 +12,7 @@ import UIKit
 class PortfolioViewController: UITableViewController {
 
     let repository = CoinRepository.shared
+    let portfolio = Portfolio.shared
 
     var positions = [Position]()
     var busy = false
@@ -23,6 +24,7 @@ class PortfolioViewController: UITableViewController {
 
         tableView.setContentOffset(CGPoint(x: 0, y: -refreshControl!.frame.size.height), animated: true)
         refreshCoins()
+
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -35,7 +37,7 @@ class PortfolioViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        if positions.count == 0 {
+        if positions.isEmpty {
             return 1
         }
 
@@ -65,9 +67,47 @@ class PortfolioViewController: UITableViewController {
         return cell
     }
 
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+
+        if positions.isEmpty {
+            return false
+        }
+
+        return indexPath.row > 0
+    }
+
+    override func tableView(_ tableView: UITableView, canPerformAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
+        return true
+    }
+
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+
+        if positions.isEmpty {
+            return nil
+        }
+
+        if indexPath.row == 0 {
+            return nil
+        }
+
+        let subtract = UITableViewRowAction(style: .default, title: "Sell") { (action, indexPath) in }
+        subtract.backgroundColor = UIColor.orange
+
+        let position = positions[indexPath.row - 1]
+
+        let delete =  UITableViewRowAction(style: .default, title: "Delete") { (action, indexPath) in
+            self.confirm(message: "Delete this coin?") {
+                self.portfolio.delete(coinId: position.coinId)
+                self.refreshPortfolio()
+            }
+        }
+
+        return [subtract, delete]
+    }
+
     func refreshPortfolio() {
         navigationItem.title = "Your Coins - \(AppSettings().currency)"
-        positions = Array(Portfolio.shared.positions.values).sorted(by: { (left, right) -> Bool in
+        positions = Array(portfolio.positions.values).sorted(by: { (left, right) -> Bool in
             guard let leftCoin = repository.coin(for: left.coinId) else { return false }
             guard let rightCoin = repository.coin(for: right.coinId) else { return false }
             return leftCoin.symbol.compare(rightCoin.symbol) == .orderedAscending

@@ -39,4 +39,16 @@ class Database {
         return dbItem
     }
 
+    func removeHistoryItems(for coinId: String) {
+
+        for item in history {
+            if item.coinId == coinId {
+                container.viewContext.delete(item)
+            }
+        }
+
+        try! container.viewContext.save()
+
+    }
+
 }

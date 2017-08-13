@@ -10,6 +10,7 @@
 		856AF5291F40DDB000BD69BE /* Portfolio.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 856AF5281F40DDB000BD69BE /* Portfolio.storyboard */; };
 		856AF52D1F40E78F00BD69BE /* App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 856AF52B1F40E78F00BD69BE /* App.xcdatamodeld */; };
 		856AF52F1F40E82D00BD69BE /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856AF52E1F40E82D00BD69BE /* Database.swift */; };
+		856AF5321F41019000BD69BE /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856AF5311F41019000BD69BE /* UIViewControllerExtension.swift */; };
 		857A07F81F3EF39D0035EFF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857A07F71F3EF39D0035EFF4 /* AppDelegate.swift */; };
 		857A07FD1F3EF39D0035EFF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 857A07FB1F3EF39D0035EFF4 /* Main.storyboard */; };
 		857A07FF1F3EF39D0035EFF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 857A07FE1F3EF39D0035EFF4 /* Assets.xcassets */; };
@@ -29,6 +30,7 @@
 		856AF5281F40DDB000BD69BE /* Portfolio.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Portfolio.storyboard; sourceTree = "<group>"; };
 		856AF52C1F40E78F00BD69BE /* App.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = App.xcdatamodel; sourceTree = "<group>"; };
 		856AF52E1F40E82D00BD69BE /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		856AF5311F41019000BD69BE /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		857A07F41F3EF39D0035EFF4 /* CoinTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoinTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		857A07F71F3EF39D0035EFF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		857A07FC1F3EF39D0035EFF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -97,9 +99,10 @@
 		857A080D1F3EF8A20035EFF4 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				856AF5301F40F3E400BD69BE /* Portfolio */,
 				857A081A1F3F13300035EFF4 /* Add Coin */,
 				857A081B1F3F133D0035EFF4 /* Main */,
+				856AF5301F40F3E400BD69BE /* Portfolio */,
+				856AF5311F41019000BD69BE /* UIViewControllerExtension.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 				857A08131F3EF9310035EFF4 /* AppSettings.swift in Sources */,
 				856AF52D1F40E78F00BD69BE /* App.xcdatamodeld in Sources */,
 				856AF52F1F40E82D00BD69BE /* Database.swift in Sources */,
+				856AF5321F41019000BD69BE /* UIViewControllerExtension.swift in Sources */,
 				857A07F81F3EF39D0035EFF4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
