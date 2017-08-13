@@ -21,7 +21,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="F0C-Or-Q0g" kind="relationship" relationship="viewControllers" id="smu-sj-i7P"/>
-                        <segue destination="eNX-6h-pqu" kind="relationship" relationship="viewControllers" id="d8g-m8-O6X"/>
+                        <segue destination="lQ2-NZ-gTp" kind="relationship" relationship="viewControllers" id="4At-0M-0wn"/>
                         <segue destination="o0h-OU-N8j" kind="relationship" relationship="viewControllers" id="SOs-Dx-wEB"/>
                     </connections>
                 </tabBarController>
@@ -54,7 +54,34 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hOf-A3-faF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-7737" y="-1020"/>
+            <point key="canvasLocation" x="-7737" y="-1021"/>
+        </scene>
+        <!--History-->
+        <scene sceneID="Nxx-63-6x9">
+            <objects>
+                <viewControllerPlaceholder storyboardName="History" id="crV-hm-Lwp" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="SN4-R0-QDg"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="meM-pz-BZm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-6912" y="-1021"/>
+        </scene>
+        <!--History-->
+        <scene sceneID="D2O-Av-P00">
+            <objects>
+                <navigationController id="lQ2-NZ-gTp" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="History" id="Awb-5Z-KeK"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ywW-3v-At5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="crV-hm-Lwp" kind="relationship" relationship="rootViewController" id="zzV-zz-NHX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zeh-eQ-BWT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-6912" y="-1471"/>
         </scene>
         <!--Settings-->
         <scene sceneID="Axh-9J-awF">
@@ -84,35 +111,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AFz-lz-G82" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-6004" y="-1471"/>
-        </scene>
-        <!--History-->
-        <scene sceneID="LgN-tX-J4p">
-            <objects>
-                <tableViewController id="eNX-6h-pqu" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="aDy-5z-BS8">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="Fli-wG-eB6">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fli-wG-eB6" id="Shc-9N-Aqo">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="eNX-6h-pqu" id="GHA-DV-tsu"/>
-                            <outlet property="delegate" destination="eNX-6h-pqu" id="ajw-vN-ke4"/>
-                        </connections>
-                    </tableView>
-                    <tabBarItem key="tabBarItem" title="History" id="VH7-JZ-6AF"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aGb-Mq-AKo" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-6911" y="-1471"/>
         </scene>
     </scenes>
 </document>
