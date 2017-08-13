@@ -13,6 +13,7 @@ class CoinRepository {
     static var shared = CoinRepository()
 
     var coins = [Coin]()
+    var lastUpdated = Date()
 
     private init() {
         
@@ -29,6 +30,7 @@ class CoinRepository {
                     left.symbol.compare(right.symbol) == ComparisonResult.orderedAscending
                 })
 
+                self.lastUpdated = Date()
             }
 
             DispatchQueue.main.async {

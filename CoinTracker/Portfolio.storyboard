@@ -56,19 +56,29 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fdj-dw-Bk6">
-                                            <rect key="frame" x="0.0" y="24" width="375" height="33.5"/>
+                                            <rect key="frame" x="0.0" y="9.5" width="375" height="33.5"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3m1-Ja-mrc">
+                                            <rect key="frame" x="-0.5" y="55" width="375" height="13.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="fdj-dw-Bk6" firstAttribute="centerY" secondItem="Tro-om-QML" secondAttribute="centerY" id="5Iy-Zi-6us"/>
+                                        <constraint firstItem="fdj-dw-Bk6" firstAttribute="centerY" secondItem="Tro-om-QML" secondAttribute="centerY" constant="-15" id="5Iy-Zi-6us"/>
                                         <constraint firstItem="fdj-dw-Bk6" firstAttribute="width" secondItem="Tro-om-QML" secondAttribute="width" id="BON-RY-eUk"/>
+                                        <constraint firstItem="3m1-Ja-mrc" firstAttribute="centerY" secondItem="Tro-om-QML" secondAttribute="centerY" constant="20" id="M1z-db-teg"/>
+                                        <constraint firstItem="3m1-Ja-mrc" firstAttribute="centerX" secondItem="Tro-om-QML" secondAttribute="centerX" id="Qg7-RB-fv3"/>
                                         <constraint firstItem="fdj-dw-Bk6" firstAttribute="centerX" secondItem="Tro-om-QML" secondAttribute="centerX" id="RHy-8V-Ygb"/>
+                                        <constraint firstItem="3m1-Ja-mrc" firstAttribute="width" secondItem="Tro-om-QML" secondAttribute="width" id="Rfu-0E-n8G"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="lastUpdatedText" destination="3m1-Ja-mrc" id="ihb-Bw-i7N"/>
                                     <outlet property="totalText" destination="fdj-dw-Bk6" id="MEV-nN-fL0"/>
                                 </connections>
                             </tableViewCell>

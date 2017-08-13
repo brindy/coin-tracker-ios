@@ -58,6 +58,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		856AF5301F40F3E400BD69BE /* Portfolio */ = {
+			isa = PBXGroup;
+			children = (
+				85A9CBCC1F3F31B100CE7529 /* PortfolioViewController.swift */,
+				856AF5281F40DDB000BD69BE /* Portfolio.storyboard */,
+			);
+			name = Portfolio;
+			sourceTree = "<group>";
+		};
 		857A07EB1F3EF39D0035EFF4 = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +97,7 @@
 		857A080D1F3EF8A20035EFF4 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				856AF5301F40F3E400BD69BE /* Portfolio */,
 				857A081A1F3F13300035EFF4 /* Add Coin */,
 				857A081B1F3F133D0035EFF4 /* Main */,
 			);
@@ -140,8 +150,6 @@
 			isa = PBXGroup;
 			children = (
 				857A07FB1F3EF39D0035EFF4 /* Main.storyboard */,
-				85A9CBCC1F3F31B100CE7529 /* PortfolioViewController.swift */,
-				856AF5281F40DDB000BD69BE /* Portfolio.storyboard */,
 			);
 			name = Main;
 			sourceTree = "<group>";

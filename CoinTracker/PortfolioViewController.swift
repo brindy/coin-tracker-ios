@@ -14,20 +14,20 @@ class PortfolioViewController: UITableViewController {
     let repository = CoinRepository.shared
 
     var positions = [Position]()
+    var busy = false
 
     override func viewDidLoad() {
-        CoinRepository.shared.refresh {
-            self.tableView.reloadData()
-        }
+
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
+
+        tableView.setContentOffset(CGPoint(x: 0, y: -refreshControl!.frame.size.height), animated: true)
+        refresh()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         navigationItem.title = "Your Coins - \(AppSettings().currency)"
-        positions = Array(Portfolio.shared.positions.values).sorted(by: { (left, right) -> Bool in
-            guard let leftCoin = repository.coin(for: left.coinId) else { return true }
-            guard let rightCoin = repository.coin(for: right.coinId) else { return true }
-            return leftCoin.symbol.compare(rightCoin.symbol) == .orderedAscending
-        })
+        positions = Array(Portfolio.shared.positions.values)
         tableView.reloadData()
     }
 
@@ -67,11 +67,22 @@ class PortfolioViewController: UITableViewController {
         return cell
     }
 
+    func refresh() {
+        busy = true
+        refreshControl?.beginRefreshing()
+        CoinRepository.shared.refresh {
+            self.busy = false
+            self.refreshControl?.endRefreshing()
+            self.tableView.reloadData()
+        }
+    }
+
 }
 
 class TotalCell: UITableViewCell {
 
     @IBOutlet weak var totalText: UILabel!
+    @IBOutlet weak var lastUpdatedText: UILabel!
 
     func update(with positions: [Position]) {
 
@@ -85,6 +96,11 @@ class TotalCell: UITableViewCell {
         }
 
         totalText.text = String(format: "%.2f \(AppSettings().currency)", value)
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .medium
+        lastUpdatedText.text = "Last updated \(dateFormatter.string(from: repository.lastUpdated))"
     }
 
 }
