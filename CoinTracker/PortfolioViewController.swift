@@ -11,10 +11,20 @@ import UIKit
 
 class PortfolioViewController: UITableViewController {
 
+    let repository = CoinRepository.shared
+
     var positions = [Position]()
 
+    override func viewDidLoad() {
+        title = "Your Coins - \(AppSettings().currency)"
+    }
+
     override func viewDidAppear(_ animated: Bool) {
-        positions = Array(Portfolio.shared.positions.values)
+        positions = Array(Portfolio.shared.positions.values).sorted(by: { (left, right) -> Bool in
+            guard let leftCoin = repository.coin(for: left.coinId) else { return true }
+            guard let rightCoin = repository.coin(for: right.coinId) else { return true }
+            return leftCoin.symbol.compare(rightCoin.symbol) == .orderedAscending
+        })
         tableView.reloadData()
     }
 
@@ -53,8 +63,13 @@ class PositionCell: UITableViewCell {
         amountText.text = "\(position.amount) \(coin.name)"
 
         let price = Double(coin.price) ?? 0.0
-        valueText.text = "\(position.amount * price) // \(coin.price)"
-        changeText.text = coin.change.day
+        let value = position.amount * price
+        valueText.text = String(format: "%.2f // %.2f", value, price)
+
+        let change = coin.change.day
+        let directionUp = change.characters.first != "-"
+        let direction = directionUp ? "+" : ""
+        changeText.text = "\(direction)\(change)"
         changeTypeText.text = "24h"
 
         // TODO direction of change

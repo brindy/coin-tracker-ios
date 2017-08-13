@@ -62,7 +62,7 @@
         <scene sceneID="tgo-AZ-0IZ">
             <objects>
                 <tableViewController id="KxT-7j-tKJ" customClass="EnterCoinDetailsViewController" customModule="CoinTracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="YQQ-yi-8Gp">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="YQQ-yi-8Gp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -121,6 +121,10 @@
                                                 <constraint firstItem="Ys6-JT-KAf" firstAttribute="leading" secondItem="Gjb-AY-cK5" secondAttribute="leadingMargin" constant="8" id="qqb-jr-Wbl"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="0DS-Nv-QXb" appends="YES" id="5xt-vX-w47"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="53" id="ZM9-KO-yXr">
                                         <rect key="frame" x="0.0" y="132" width="375" height="53"/>
@@ -150,6 +154,10 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="rLU-4r-f5D" secondAttribute="trailing" constant="15" id="nhi-sN-f5I"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="Lo3-qM-rxP" appends="YES" id="Ec0-ez-r0n"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -185,6 +193,16 @@
                 <tapGestureRecognizer id="kov-hi-KzO">
                     <connections>
                         <action selector="inputDate" destination="KxT-7j-tKJ" id="476-Jx-C1x"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Lo3-qM-rxP">
+                    <connections>
+                        <action selector="tapAmountCell" destination="KxT-7j-tKJ" id="qN8-q6-Ch2"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="0DS-Nv-QXb">
+                    <connections>
+                        <action selector="tapDateCell" destination="KxT-7j-tKJ" id="in5-3k-n1y"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

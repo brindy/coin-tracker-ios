@@ -21,6 +21,8 @@ class EnterCoinDetailsViewController: UITableViewController {
     let formatter = DateFormatter()
 
     override func viewDidLoad() {
+        title = coin.symbol
+
         formatter.dateStyle = .medium
 
         titleCell.textLabel?.text = coin.symbol
@@ -30,9 +32,22 @@ class EnterCoinDetailsViewController: UITableViewController {
         datePicker.addTarget(self, action: #selector(updateDate), for: .valueChanged)
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        amountText.resignFirstResponder()
+        dateText.resignFirstResponder()
+    }
+
     @IBAction func done() {
         Portfolio.shared.add(coin, amount: Double(amountText.text ?? "0")!, date: datePicker.date)
         navigationController?.popToRootViewController(animated: true)
+    }
+
+    @IBAction func tapAmountCell() {
+        amountText.becomeFirstResponder()
+    }
+
+    @IBAction func tapDateCell() {
+        dateText.becomeFirstResponder()
     }
 
     func updateDate() {

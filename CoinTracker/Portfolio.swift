@@ -28,7 +28,7 @@ class Portfolio {
         positions = [String : Position]()
         for entry in history {
             updatePosition(with: entry)
-        }
+        }        
     }
 
     func updatePosition(with entry: HistoricalEntry) {
