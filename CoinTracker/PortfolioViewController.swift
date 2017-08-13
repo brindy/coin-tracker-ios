@@ -15,6 +15,12 @@ class PortfolioViewController: UITableViewController {
 
     var positions = [Position]()
 
+    override func viewDidLoad() {
+        CoinRepository.shared.refresh {
+            self.tableView.reloadData()
+        }
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         navigationItem.title = "Your Coins - \(AppSettings().currency)"
         positions = Array(Portfolio.shared.positions.values).sorted(by: { (left, right) -> Bool in

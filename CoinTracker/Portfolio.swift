@@ -13,34 +13,33 @@ class Portfolio {
     public static let shared = Portfolio()
 
     var positions = [String: Position]()
-    var history = [HistoricalEntry]()
 
     private init() {
-        
+        rebuildPositions()
     }
 
     func add(_ coin: Coin, amount: Double, date: Date) {
-        history.append(HistoricalEntry(coinId: coin.id, amount: amount, date: date))
-        rebuildPosition()
+        _ = Database.shared.addHistoryItem(coinId: coin.id, amount: amount, date: date)
+        rebuildPositions()
     }
 
-    func rebuildPosition() {
+    func rebuildPositions() {
         positions = [String : Position]()
-        for entry in history {
+        for entry in Database.shared.history {
             updatePosition(with: entry)
         }        
     }
 
-    func updatePosition(with entry: HistoricalEntry) {
+    func updatePosition(with item: HistoryItem) {
 
-        var foundPosition = positions[entry.coinId]
+        var foundPosition = positions[item.coinId!]
         if foundPosition == nil {
-            foundPosition = Position(coinId: entry.coinId, amount: entry.amount)
+            foundPosition = Position(coinId: item.coinId!, amount: item.amount)
         } else {
-            foundPosition?.amount += entry.amount
+            foundPosition?.amount += item.amount
         }
 
-        positions[entry.coinId] = foundPosition
+        positions[item.coinId!] = foundPosition
     }
 
 }
@@ -49,13 +48,5 @@ struct Position {
 
     var coinId: String
     var amount: Double
-
-}
-
-struct HistoricalEntry {
-
-    var coinId: String
-    var amount: Double
-    var date: Date
 
 }
