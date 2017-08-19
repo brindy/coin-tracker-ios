@@ -20,11 +20,11 @@ class PortfolioViewController: UITableViewController {
     override func viewDidLoad() {
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(refreshCoins), for: .valueChanged)
-        tableView.setContentOffset(CGPoint(x: 0, y: -refreshControl!.frame.size.height), animated: true)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         refreshPortfolio()
+        tableView.bounces = !positions.isEmpty
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -157,7 +157,6 @@ class PositionCell: UITableViewCell {
     @IBOutlet weak var valueText: UILabel!
     @IBOutlet weak var changeText: UILabel!
     @IBOutlet weak var changeTypeText: UILabel!
-    @IBOutlet weak var changeDirectionImage: UIImageView!
 
     func update(with position: Position, and coin: Coin) {
         symbolText.text = coin.symbol
@@ -171,9 +170,9 @@ class PositionCell: UITableViewCell {
         let directionUp = change.characters.first != "-"
         let direction = directionUp ? "+" : ""
         changeText.text = "\(direction)\(change)%"
-        changeTypeText.text = "24h"
 
-        // TODO image for direction of change
+        let directionIndiator = directionUp ? "🔼" : "🔽"
+        changeTypeText.text = "\(directionIndiator) 24h"
     }
 
     func unknwownCoin() {
@@ -182,7 +181,6 @@ class PositionCell: UITableViewCell {
         valueText.text = ""
         changeText.text = ""
         changeTypeText.text = ""
-        changeDirectionImage.image = nil
     }
 
 }
