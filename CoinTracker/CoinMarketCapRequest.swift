@@ -41,20 +41,21 @@ fileprivate extension DataResponse where Value == Any {
 fileprivate extension Dictionary where Key == String {
 
     func toCoin(for currency: String) -> Coin {
-
-        return Coin(id: self["id"] as? String ?? "id?",
-                    name: self["name"] as? String ?? "name?",
-                    symbol: self["symbol"] as? String ?? "symbol?",
-                    price: self["price_\(currency)"] as? String ?? "price??",
-                    change: toPriceChange())
+        let coin = Coin()
+        coin.id = self["id"] as? String ?? "id?"
+        coin.name = self["name"] as? String ?? "name?"
+        coin.symbol = self["symbol"] as? String ?? "symbol?"
+        coin.price = self["price_\(currency)"] as? String ?? "price??"
+        coin.change = toPriceChange()
+        return coin
     }
 
     func toPriceChange() -> PriceChange {
-
-        return PriceChange(hour: self["percent_change_1h"] as? String ?? "1h?",
-                           day: self["percent_change_24h"] as? String ?? "24h?",
-                           sevenDays: self["percent_change_7d"] as? String ?? "7d?")
-        
+        let change = PriceChange()
+        change.hour = self["percent_change_1h"] as? String ?? "1h?"
+        change.day = self["percent_change_24h"] as? String ?? "24h?"
+        change.sevenDays = self["percent_change_7d"] as? String ?? "7d?"
+        return change
     }
 
 }

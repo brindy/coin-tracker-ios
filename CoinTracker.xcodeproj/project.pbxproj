@@ -26,6 +26,7 @@
 		857A081D1F3F160B0035EFF4 /* EnterCoinDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857A081C1F3F160B0035EFF4 /* EnterCoinDetailsViewController.swift */; };
 		85A9CBCB1F3F2D6600CE7529 /* Portfolio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A9CBCA1F3F2D6600CE7529 /* Portfolio.swift */; };
 		85A9CBCD1F3F31B100CE7529 /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A9CBCC1F3F31B100CE7529 /* PortfolioViewController.swift */; };
+		85F4D03C1F4872270018BFD5 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85F4D03B1F4872270018BFD5 /* Realm.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		857A081C1F3F160B0035EFF4 /* EnterCoinDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterCoinDetailsViewController.swift; sourceTree = "<group>"; };
 		85A9CBCA1F3F2D6600CE7529 /* Portfolio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Portfolio.swift; sourceTree = "<group>"; };
 		85A9CBCC1F3F31B100CE7529 /* PortfolioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
+		85F4D03B1F4872270018BFD5 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				857A08161F3F01D50035EFF4 /* Alamofire.framework in Frameworks */,
+				85F4D03C1F4872270018BFD5 /* Realm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,6 +151,7 @@
 		857A08141F3F01D50035EFF4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				85F4D03B1F4872270018BFD5 /* Realm.framework */,
 				857A08151F3F01D50035EFF4 /* Alamofire.framework */,
 			);
 			name = Frameworks;
@@ -251,10 +255,14 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
 			);
 			name = "Carthage Copy Frameworks";
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Alamofire.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Realm.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RealmSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

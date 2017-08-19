@@ -18,13 +18,9 @@ class PortfolioViewController: UITableViewController {
     var busy = false
 
     override func viewDidLoad() {
-
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(refreshCoins), for: .valueChanged)
-
         tableView.setContentOffset(CGPoint(x: 0, y: -refreshControl!.frame.size.height), animated: true)
-        refreshCoins()
-
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -165,19 +161,23 @@ class PositionCell: UITableViewCell {
 
     func update(with position: Position, and coin: Coin) {
         symbolText.text = coin.symbol
-        amountText.text = "\(position.amount) \(coin.name)"
+        amountText.text = "\(position.amount) \(coin.name ?? "?")"
 
         let price = Double(coin.price) ?? 0.0
         let value = position.amount * price
         valueText.text = String(format: "%.2f // %.2f", value, price)
 
-        let change = coin.change.day
-        let directionUp = change.characters.first != "-"
-        let direction = directionUp ? "+" : ""
-        changeText.text = "\(direction)\(change)"
-        changeTypeText.text = "24h"
+        if let change = coin.change.day {
+            let directionUp = change.characters.first != "-"
+            let direction = directionUp ? "+" : ""
+            changeText.text = "\(direction)\(change)%"
+            changeTypeText.text = "24h"
+        } else {
+            changeText.text = "?"
+            changeTypeText.text = "?"
+        }
 
-        // TODO direction of change
+        // TODO image for direction of change
     }
 
     func unknwownCoin() {
