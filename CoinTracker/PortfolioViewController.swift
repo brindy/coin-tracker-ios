@@ -9,7 +9,13 @@
 import Foundation
 import UIKit
 
-class PortfolioViewController: UITableViewController {
+class PortfolioViewController: UITableViewController, PeriodUpdatedDelegate {
+
+    struct Constants {
+        static let headerCells = 2
+    }
+
+    var currentPeriod = Period.last24h
 
     let repository = CoinRepository.shared
     let portfolio = Portfolio.shared
@@ -37,7 +43,7 @@ class PortfolioViewController: UITableViewController {
             return 1
         }
 
-        return positions.count + 1
+        return positions.count + Constants.headerCells
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -47,16 +53,23 @@ class PortfolioViewController: UITableViewController {
         }
 
         if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Period") as! PeriodCell
+            cell.delegate = self
+            cell.period = currentPeriod
+            return cell
+        }
+
+        if indexPath.row == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Total") as! TotalCell
             cell.update(with: positions)
             return cell
         }
 
-        let index = indexPath.row - 1
+        let index = indexPath.row - Constants.headerCells
         let cell = tableView.dequeueReusableCell(withIdentifier: "Position") as! PositionCell
         let position = positions[index]
         if let coin = CoinRepository.shared.coin(for: position.coinId) {
-            cell.update(with: position, and: coin)
+            cell.update(with: position, and: coin, for: currentPeriod)
         } else {
             cell.unknwownCoin()
         }
@@ -82,14 +95,14 @@ class PortfolioViewController: UITableViewController {
             return nil
         }
 
-        if indexPath.row == 0 {
+        if indexPath.row < Constants.headerCells {
             return nil
         }
 
         let subtract = UITableViewRowAction(style: .default, title: "Sell") { (action, indexPath) in }
         subtract.backgroundColor = UIColor.orange
 
-        let position = positions[indexPath.row - 1]
+        let position = positions[indexPath.row - Constants.headerCells]
 
         let delete =  UITableViewRowAction(style: .default, title: "Delete") { (action, indexPath) in
             self.confirm(message: "Delete this coin?") {
@@ -120,6 +133,11 @@ class PortfolioViewController: UITableViewController {
         CoinRepository.shared.refresh {
             self.refreshPortfolio()
         }
+    }
+
+    func periodUpdated(period: Period) {
+        currentPeriod = period
+        tableView.reloadData()
     }
 
 }
@@ -158,7 +176,7 @@ class PositionCell: UITableViewCell {
     @IBOutlet weak var changeText: UILabel!
     @IBOutlet weak var changeTypeText: UILabel!
 
-    func update(with position: Position, and coin: Coin) {
+    func update(with position: Position, and coin: Coin, for period: Period) {
         symbolText.text = coin.symbol
         amountText.text = "\(position.amount) \(coin.name)"
 
@@ -166,13 +184,14 @@ class PositionCell: UITableViewCell {
         let value = position.amount * price
         valueText.text = String(format: "%.2f // %.2f", value, price)
 
-        let change = coin.change.day
+        let change = period.change(for: coin)
         let directionUp = change.characters.first != "-"
         let direction = directionUp ? "+" : ""
         changeText.text = "\(direction)\(change)%"
 
         let directionIndiator = directionUp ? "🔼" : "🔽"
-        changeTypeText.text = "\(directionIndiator) 24h"
+
+        changeTypeText.text = "\(directionIndiator) \(period.descriptor)"
     }
 
     func unknwownCoin() {
@@ -184,3 +203,68 @@ class PositionCell: UITableViewCell {
     }
 
 }
+
+class PeriodCell: UITableViewCell {
+
+    weak var delegate: PeriodUpdatedDelegate?
+
+    @IBOutlet weak var periodSegments: UISegmentedControl!
+
+    var period: Period {
+        set {
+            periodSegments.selectedSegmentIndex = newValue.rawValue
+        }
+
+        get {
+            return Period.init(rawValue: periodSegments.selectedSegmentIndex)!
+        }
+    }
+
+    @IBAction func updatePeriod(sender: UISegmentedControl) {
+        delegate?.periodUpdated(period: period)
+    }
+
+}
+
+protocol PeriodUpdatedDelegate: class {
+
+    func periodUpdated(period: Period)
+
+}
+
+enum Period: Int {
+
+    case last1h = 0
+    case last24h
+    case last7d
+
+}
+
+extension Period {
+
+    var descriptor: String {
+        get {
+
+            switch(self) {
+            case .last1h: return "1h"
+            case .last24h: return "24h"
+            case .last7d: return "7d"
+            }
+
+        }
+    }
+
+    func change(for coin: Coin) -> String {
+
+        switch(self) {
+        case .last1h: return coin.change.hour
+        case .last24h: return coin.change.day
+        case .last7d: return coin.change.sevenDays
+        }
+
+    }
+
+}
+
+
+

@@ -20,7 +20,7 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Info" rowHeight="64" id="lPC-hH-7dQ">
-                                <rect key="frame" x="0.0" y="56" width="375" height="64"/>
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="64"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lPC-hH-7dQ" id="qcD-9I-igh">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="63.5"/>
@@ -47,8 +47,37 @@
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Total" id="M8d-hU-6gJ" customClass="TotalCell" customModule="CoinTracker" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Period" rowHeight="83" id="znk-bi-zZ0" customClass="PeriodCell" customModule="CoinTracker" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="119.5" width="375" height="83"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="znk-bi-zZ0" id="wno-Bg-Ya3">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="82.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="tiO-qC-jbB">
+                                            <rect key="frame" x="23" y="27" width="329" height="29"/>
+                                            <segments>
+                                                <segment title="1h"/>
+                                                <segment title="24h"/>
+                                                <segment title="7d  "/>
+                                            </segments>
+                                            <connections>
+                                                <action selector="updatePeriodWithSender:" destination="znk-bi-zZ0" eventType="valueChanged" id="3LS-cu-JcC"/>
+                                            </connections>
+                                        </segmentedControl>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="tiO-qC-jbB" secondAttribute="trailing" constant="15" id="65F-w1-jvc"/>
+                                        <constraint firstItem="tiO-qC-jbB" firstAttribute="centerY" secondItem="wno-Bg-Ya3" secondAttribute="centerY" id="cHC-XH-r8P"/>
+                                        <constraint firstItem="tiO-qC-jbB" firstAttribute="leading" secondItem="wno-Bg-Ya3" secondAttribute="leadingMargin" constant="15" id="jHy-pg-1wv"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="periodSegments" destination="tiO-qC-jbB" id="qY4-4z-O5F"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Total" id="M8d-hU-6gJ" customClass="TotalCell" customModule="CoinTracker" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="202.5" width="375" height="83"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M8d-hU-6gJ" id="Tro-om-QML">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="82.5"/>
@@ -82,7 +111,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Position" rowHeight="83" id="iGR-Is-57e" customClass="PositionCell" customModule="CoinTracker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="202.5" width="375" height="83"/>
+                                <rect key="frame" x="0.0" y="285.5" width="375" height="83"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iGR-Is-57e" id="ERh-q0-cb7">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="82.5"/>

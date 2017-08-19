@@ -45,7 +45,7 @@ class Portfolio {
 
         let realm = try! Realm()
         realm.beginWrite()
-        realm.delete(realm.objects(HistoryItem.self).filter("id = %@", coinId))
+        realm.delete(realm.objects(HistoryItem.self).filter("coinId = %@", coinId))
         try! realm.commitWrite()
 
     }
