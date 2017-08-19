@@ -89,18 +89,18 @@ class CoinRepository {
 
 class Coin: Object {
 
-    dynamic var id: String!
-    dynamic var name: String!
-    dynamic var symbol: String!
-    dynamic var price: String! // In currency specified by AppSettings.currency
+    dynamic var id: String = ""
+    dynamic var name: String = ""
+    dynamic var symbol: String = ""
+    dynamic var price: String = "" // in currency specified by AppSettings.currency
     dynamic var change: PriceChange!
 
 }
 
 class PriceChange: Object {
 
-    dynamic var hour: String!
-    dynamic var day: String!
-    dynamic var sevenDays: String!
+    dynamic var hour: String = ""
+    dynamic var day: String = ""
+    dynamic var sevenDays: String = ""
 
 }

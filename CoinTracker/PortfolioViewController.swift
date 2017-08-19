@@ -161,21 +161,17 @@ class PositionCell: UITableViewCell {
 
     func update(with position: Position, and coin: Coin) {
         symbolText.text = coin.symbol
-        amountText.text = "\(position.amount) \(coin.name ?? "?")"
+        amountText.text = "\(position.amount) \(coin.name)"
 
         let price = Double(coin.price) ?? 0.0
         let value = position.amount * price
         valueText.text = String(format: "%.2f // %.2f", value, price)
 
-        if let change = coin.change.day {
-            let directionUp = change.characters.first != "-"
-            let direction = directionUp ? "+" : ""
-            changeText.text = "\(direction)\(change)%"
-            changeTypeText.text = "24h"
-        } else {
-            changeText.text = "?"
-            changeTypeText.text = "?"
-        }
+        let change = coin.change.day
+        let directionUp = change.characters.first != "-"
+        let direction = directionUp ? "+" : ""
+        changeText.text = "\(direction)\(change)%"
+        changeTypeText.text = "24h"
 
         // TODO image for direction of change
     }

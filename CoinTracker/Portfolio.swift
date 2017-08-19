@@ -7,46 +7,67 @@
 //
 
 import Foundation
+import RealmSwift
 
 class Portfolio {
 
     public static let shared = Portfolio()
 
-    let database = Database.shared
-
     var positions = [String: Position]()
+    var historyItems: [HistoryItem] {
+        get {
+            return Array(try! Realm().objects(HistoryItem.self).sorted(byKeyPath: "date", ascending: false))
+        }
+    }
+
 
     private init() {
         rebuildPositions()
     }
 
     func add(coinId: String, amount: Double, date: Date) {
-        _ = database.addHistoryItem(coinId: coinId, amount: amount, date: date)
+
+        let item = HistoryItem()
+        item.coinId = coinId
+        item.amount = amount
+        item.date = date
+
+        let realm = try! Realm()
+        realm.beginWrite()
+        realm.add(item)
+        try! realm.commitWrite()
+
         rebuildPositions()
     }
 
     func delete(coinId: String) {
         positions[coinId] = nil
-        database.removeHistoryItems(for: coinId)
+
+        let realm = try! Realm()
+        realm.beginWrite()
+        realm.delete(realm.objects(HistoryItem.self).filter("id = %@", coinId))
+        try! realm.commitWrite()
+
     }
 
     func rebuildPositions() {
         positions = [String : Position]()
-        for entry in Database.shared.history {
+        let realm = try! Realm()
+        for entry in realm.objects(HistoryItem.self) {
             updatePosition(with: entry)
         }        
     }
 
     func updatePosition(with item: HistoryItem) {
 
-        var foundPosition = positions[item.coinId!]
+        var foundPosition = positions[item.coinId]
         if foundPosition == nil {
-            foundPosition = Position(coinId: item.coinId!, amount: item.amount)
+            foundPosition = Position(coinId: item.coinId, amount: item.amount)
         } else {
             foundPosition?.amount += item.amount
         }
 
-        positions[item.coinId!] = foundPosition
+        positions[item.coinId] = foundPosition
     }
 
 }
@@ -57,3 +78,12 @@ struct Position {
     var amount: Double
 
 }
+
+class HistoryItem: Object {
+
+    dynamic var coinId: String = ""
+    dynamic var amount: Double = 0.0
+    dynamic var date: Date = Date()
+
+}
+
